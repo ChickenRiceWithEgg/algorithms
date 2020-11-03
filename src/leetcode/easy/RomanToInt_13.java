@@ -38,6 +38,8 @@ public class RomanToInt_13 {
 //        String s = "LVIII";
         String s = "MCMXCIV";
         System.out.println(m1(s));
+        System.out.println(m2(s));
+        System.out.println(m3(s));
     }
 
     /**
@@ -145,5 +147,106 @@ public class RomanToInt_13 {
             }
         }
         return result;
+    }
+
+    /**
+     * 漂亮解法1
+     * 小值在大值左边表示减去小值
+     * 大值在小值左边表示加上大值
+     *
+     * @param s
+     * @return
+     */
+    public static int m2(String s) {
+        char[] eles = s.toCharArray();
+        int preNum = swith(eles[0]);
+        int result = 0;
+        for (int i = 1; i < eles.length; i++) {
+            int num = swith(eles[i]);
+            if (preNum < num) {
+                result -= preNum;
+            }
+            if (preNum >= num) {
+                result += preNum;
+            }
+            preNum = num;
+        }
+        result += preNum;
+        return result;
+    }
+
+    public static int swith(char c) {
+        switch (c) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
+    }
+
+    /**
+     * 漂亮解法2
+     * 将特殊数字替换成特定字符，然后直接获得数字
+     *
+     * @param s
+     * @return
+     */
+    public static int m3(String s) {
+        s = s.replace("IV", "a");
+        s = s.replace("IX", "b");
+        s = s.replace("XL", "c");
+        s = s.replace("XC", "d");
+        s = s.replace("CD", "e");
+        s = s.replace("CM", "f");
+
+        int result = 0;
+        for (int i = 0; i < s.length(); i++) {
+            result += swithForce(s.charAt(i));
+        }
+        return result;
+    }
+
+    public static int swithForce(char c) {
+        switch (c) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            case 'a':
+                return 4;
+            case 'b':
+                return 9;
+            case 'c':
+                return 40;
+            case 'd':
+                return 90;
+            case 'e':
+                return 400;
+            case 'f':
+                return 900;
+        }
+        return 0;
     }
 }
