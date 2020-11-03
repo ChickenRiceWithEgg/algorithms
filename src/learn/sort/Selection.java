@@ -2,10 +2,11 @@ package learn.sort;
 
 /**
  * 选择排序
- * master
+ * leetcode
  */
 public class Selection {
 
+    //leetcode
     public static void main(String[] args) {
         Integer[] a = {4, 2, 7, 9, 3, 5, 7, 9};
         CommonUtil.show(selection(a));
