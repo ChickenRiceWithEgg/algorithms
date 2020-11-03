@@ -2,6 +2,7 @@ package learn.sort;
 
 /**
  * 选择排序
+ * master
  */
 public class Selection {
 
