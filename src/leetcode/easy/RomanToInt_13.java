@@ -31,11 +31,22 @@ import java.util.List;
 public class RomanToInt_13 {
 
     public static void main(String[] args) {
-        String s = "III";
-        System.out.println(romanToInt(s));
+//        String s = "III";
+//        String s = "XII";
+//        String s = "IX";
+//        String s = "XXVII";
+//        String s = "LVIII";
+        String s = "MCMXCIV";
+        System.out.println(m1(s));
     }
 
-    public static int romanToInt(String s) {
+    /**
+     * 暴力解法
+     *
+     * @param s
+     * @return
+     */
+    public static int m1(String s) {
         List<Character> special = Arrays.asList('I', 'X', 'C');
 
         char[] chars = s.toCharArray();
@@ -48,41 +59,62 @@ public class RomanToInt_13 {
                     if ('I' == ele) {
                         if ('V' == eleNext) {
                             result += 4;
+                            i++;
+                            continue;
                         }
                         if ('X' == eleNext) {
                             result += 9;
+                            i++;
+                            continue;
                         }
+                        result += 1;
                     }
                     if ('X' == ele) {
                         if ('L' == eleNext) {
                             result += 40;
+                            i++;
+                            continue;
                         }
                         if ('C' == eleNext) {
                             result += 90;
+                            i++;
+                            continue;
                         }
+                        result += 10;
                     }
                     if ('C' == ele) {
                         if ('D' == eleNext) {
                             result += 400;
+                            i++;
+                            continue;
                         }
                         if ('M' == eleNext) {
                             result += 900;
+                            i++;
+                            continue;
                         }
+                        result += 100;
                     }
                 } else {
                     switch (ele) {
                         case 'I':
                             result += 1;
+                            break;
                         case 'V':
                             result += 5;
+                            break;
                         case 'X':
                             result += 10;
+                            break;
                         case 'L':
                             result += 50;
+                            break;
                         case 'C':
                             result += 100;
+                            break;
                         case 'D':
                             result += 500;
+                            break;
                         case 'M':
                             result += 1000;
                     }
