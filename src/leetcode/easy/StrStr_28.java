@@ -54,7 +54,10 @@ public class StrStr_28 {
         return -1;
     }
 
-    public static int m1(String haystack, String needle) {
-    }
+    /**
+     * 用KMP算法，涉及动态规划
+     */
+//    public static int m1(String haystack, String needle) {
+//    }
 
 }
