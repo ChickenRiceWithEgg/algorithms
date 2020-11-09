@@ -13,4 +13,10 @@ public class CommonUtil {
         a[index1] = a[index2];
         a[index2] = tmp;
     }
+
+    public static void exchange(int[] a, int index1, int index2) {
+        int tmp = a[index1];
+        a[index1] = a[index2];
+        a[index2] = tmp;
+    }
 }
