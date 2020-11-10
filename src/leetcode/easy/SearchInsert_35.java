@@ -4,12 +4,15 @@ package leetcode.easy;
  * 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
  * <p>
  * 你可以假设数组中无重复元素
+ * <p>
+ * <p>
+ * 二分查找也很难啊。。。各种边界问题
  */
 public class SearchInsert_35 {
 
     public static void main(String[] args) {
-        int[] nums = {1, 3, 5, 6};
-        System.out.println(m1(nums, 5));
+        int[] nums = {1, 3, 4, 5, 6};
+        System.out.println(m1(nums, 4));
     }
 
     /**
@@ -67,6 +70,6 @@ public class SearchInsert_35 {
                 low = mid + 1;
             }
         }
-        return low; //当最后锁定到target的时候。low=high，这时候while循环里面mid=low=high，第一个if判断通过计算high=mid-1，下一次while循环不满足，所有应该返回low的值
+        return low; //当最后锁定到target的时候。low=high，这时候while循环里面mid=low=high，第一个if判断通过计算high=mid-1=low-1，下一次while循环不满足，所有应该返回low的值
     }
 }
